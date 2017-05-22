@@ -1,0 +1,13 @@
+{
+  "presets": [
+    ["es2015", {"loose": true}],
+    "stage-0",
+    "react"
+  ],
+  "plugins":["transform-class-properties"],
+  "env": {
+    "production": {
+      "plugins": ["transform-react-constant-elements"]
+    }
+  }
+}

@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  font-size: 16px;
+  min-width: 310px;
+  background-color: #B2EBF2;
+}
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+  width: 940px;
+}
+
+a {
+  color: #00bcd4;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.4s;
+}
+
+a:hover {
+  color: #1976d2;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.top-bar {
+  padding: 0px 15px;
+  font-family: 'Roboto', sans-serif;
+  background-color: white;
+}
+.top-bar::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.top-bar-left {
+  float: left;
+  font-size: 1.5rem;
+}
+
+.top-bar-right {
+  float: right;
+  line-height: 29px;
+}
+
+.top-bar a,
+.nav a {
+  margin: 0 8px;
+  font-weight: 400;
+}
+
+.header {
+  padding: 20px;
+  background-color: rgb(0, 188, 212);
+
+  h1, h3 {
+    color: #fff;
+    margin: 0;
+    font-weight: 300;
+  }
+  h1 { font-size: 56px }
+}
+
+.serch-form { padding-bottom: 20px; }
+
+.card-heading {
+  color: white;
+  background-color: rgb(0, 188, 212) !important;
+  padding: 16px;
+  margin: 0;
+  font-size: 2.4rem;
+  font-weight: 400;
+}
+
+.field-line {
+  padding-bottom: 16px;
+
+  label {
+    width: 100%;
+    transform-origin: center top 30px !important;
+  }
+
+  input {
+    color: #757575 !important;
+    text-align: center;
+  }
+}
+
+.button-line { padding: 16px }
+
+.error-message {
+  padding: 0 16px;
+  color: tomato;
+}
+
+.success-message {
+  padding: 0 16px;
+  color: green;
+}
+
+.grid-list {
+  .sub {
+    padding-left: 0 !important;
+
+    h2 {
+      color: #BDBDBD;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+}
+
+.imgTile {
+  .link-btn {
+    height: unset !important;
+    line-height: unset !important;
+    span {
+      font-weight: 500 !important;
+      color: white;
+    }
+  }
+  .subtitle {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-bottom: 16px;
+  }
+}
+
+.footer {
+  color: #9E9E9E;
+  font-family: 'Roboto', sans-serif;
+}
+
+@media only screen and (max-width: 767px) {
+  .container { width: 93% }
+}
+
+@media only screen and (max-width: 959px) and (min-width: 768px) {
+  .container { width: 740px }
+}

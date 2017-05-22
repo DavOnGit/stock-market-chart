@@ -1,0 +1,8 @@
+node_modules/
+dist/
+server/config/index.js
+.env
+playground/**/*.*
+*.log*
+npm-debug.log
+*.stackdump
