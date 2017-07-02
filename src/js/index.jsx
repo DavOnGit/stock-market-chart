@@ -13,6 +13,10 @@ const store = configureStore(browserHistory, initialState)
 
 export const history = syncHistoryWithStore(browserHistory, store)
 
+// Setup socket event listeners to sync local redux store with server store
+import stockSocketListeners from './socket-listeners/stock-listeners'
+stockSocketListeners(store.dispatch)
+
 // remove tap delay, essential for MaterialUI to work properly
 injectTapEventPlugin()
 

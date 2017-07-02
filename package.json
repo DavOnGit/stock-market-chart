@@ -15,7 +15,7 @@
     "build": "npm run clean && npm run prod-build",
     "prod-build": "cross-env NODE_ENV=production webpack -p --config webpack.config.js --color --progress --display-error-details",
     "serve": "cross-env NODE_ENV=development node ./server/server.js",
-    "prod-serve": "cross-env NODE_ENV=production node server.js",
+    "prod-serve": "cross-env NODE_ENV=production node ./server/server.js",
     "clean": "rimraf dist/**/*.*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

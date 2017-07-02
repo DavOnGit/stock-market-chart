@@ -1,17 +1,27 @@
 import React from 'react'
 
-class Line extends React.Component {
+class Line extends React.PureComponent {
+  handleMouseOver = () => () => {
+    this.props.handleMouseOver(this.props.data)
+  }
+
+  handleMouseOut = () => () => { this.props.handleMouseOut() }
+
   render () {
-    const { path, stroke, fill, strokeWidth } = this.props
+    console.log('render Line') // TODO: delete this!
+    const { type, path, stroke, strokeWidth } = this.props
     return (
       <path
-        onMouseEnter={() => { console.log('FkU!') }}
+        onMouseOver={type === 'voronoi' ? this.handleMouseOver() : undefined}
+        onMouseOut={type === 'voronoi' ? this.handleMouseOut() : undefined}
         d={path}
         fill={'none'}
-        stroke={stroke}
+        stroke={type === 'voronoi' ? 'transparent' : stroke}
         strokeWidth={strokeWidth}
         strokeLinejoin={'round'}
-        strokeLinecap={'round'} />
+        strokeLinecap={'round'}
+        pointerEvents={type === 'voronoi' ? 'all' : 'none'}
+      />
     )
   }
 }

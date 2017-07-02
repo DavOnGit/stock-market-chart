@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
-import { userReducer, loaderReducer, yelpSearchReducer } from './reducers'
+import { stockReducer, loaderReducer, errorReducer } from './reducers'
 
 const rootReducer = combineReducers({
-  user: userReducer,
-  yelpResults: yelpSearchReducer,
+  stocks: stockReducer,
   fetching: loaderReducer,
-  routing: routerReducer
+  routing: routerReducer,
+  error: errorReducer
 })
 
 export default rootReducer

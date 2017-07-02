@@ -29,7 +29,7 @@ var serverOptions = {
 app.use(require('webpack-dev-middleware')(webpackCompiler, serverOptions))
 app.use(require('webpack-hot-middleware')(webpackCompiler))
 
-app.use(['/api/*'], function (req, res) {
+app.use(['/api', '/socket.io'], function (req, res) {
   req.url = req.originalUrl // Janky hack to pass also query string and parameters...
   apiProxy.web(req, res)
 
@@ -43,7 +43,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
-http.on('upgrade', (req, socket, head) => {
+http.on('upgrade', (req, socket, head) => {console.log('Connection upgraded succesfully')
   apiProxy.ws(req, socket, head)
 })
 

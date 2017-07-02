@@ -1,14 +1,81 @@
+html, body, #react-app, .root { height: 100%; }
+
 body {
   margin: 0;
   font-size: 16px;
   min-width: 310px;
-  background-color: #B2EBF2;
+  background-color: #0097A7;
 }
 
 .container {
   margin: 0 auto;
   text-align: center;
   width: 940px;
+  min-height: 100%;
+  font-family: 'Verdana', sans-serif;
+  background-color: #FFF;
+  //padding: 1px;
+  //box-sizing: border-box;
+}
+
+.title {
+  margin-bottom: 1em;
+  padding: 15px;
+  color: #FFF;
+  background-color: #00838F;
+  h1 {
+    margin: 0 auto;
+    padding-bottom: 0.26em;
+    font-weight: 600;
+  }
+  h4 {
+    margin: 0 auto;
+    font-weight: 400;
+  }
+}
+
+.chart {
+  background-color: #FFF;
+  cursor: crosshair;
+  overflow: visible;
+}
+
+.noStockMsg { padding-top: 150px; }
+
+.stockList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 5px 5px 60px !important;
+}
+
+.stock {
+  width: 200px;
+  background-color: rgba(0,0,0,0.1) !important;
+  margin: 5px !important;
+  &:hover { background-color: rgba(0,0,0,0.2) !important}
+}
+
+.fetching {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  .submitBtn {
+    display: block !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    width: 48px !important;
+    min-width: 48px !important;
+    margin: 0 10px !important;
+    //background-color: rgba(200,0,0,0.1) !important;
+    border-radius: 50% !important;
+    //line-height: 24px !important;
+  }
 }
 
 a {
@@ -137,10 +204,10 @@ a:hover {
   font-family: 'Roboto', sans-serif;
 }
 
-@media only screen and (max-width: 767px) {
-  .container { width: 93% }
-}
-
-@media only screen and (max-width: 959px) and (min-width: 768px) {
-  .container { width: 740px }
-}
+// @media only screen and (max-width: 767px) {
+//   .container { width: 93% }
+// }
+//
+// @media only screen and (max-width: 959px) and (min-width: 768px) {
+//   .container { width: 740px }
+// }

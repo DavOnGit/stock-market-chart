@@ -1,14 +1,4 @@
-export const userReducer = (state = {}, action) => {
-  switch (action.type) {
-    case 'LOGIN':
-      return { ...state, name: action.name }
-
-    case 'LOGOUT':
-      return {}
-    default:
-      return state
-  }
-}
+import * as d3 from 'd3'
 
 export const loaderReducer = (state = false, action) => {
   switch (action.type) {
@@ -23,42 +13,47 @@ export const loaderReducer = (state = false, action) => {
   }
 }
 
-export const yelpSearchReducer = (state = {}, action) => {
+export const stockReducer = (state = [], action) => {
+  const parseTime1 = d3.utcParse('%Y-%m-%d')
+  const parseTime2 = d3.utcParse('%Y-%m-%d %H:%M:%S')
   switch (action.type) {
-    case 'SET_RESULTS':
-      return action.results
+    case 'newwsconn':
+      if (action.stocks.length === 0) return []
+      return action.stocks.map((stock, idx) => {
+        const keyList = Object.keys(stock['Time Series (Daily)'])
+        return (
+          keyList.map((key, idx) => {
+            return {
+              id: stock['Meta Data']['2. Symbol'],
+              date: parseTime1(key) || parseTime2(key),
+              value: stock['Time Series (Daily)'][key]['4. close']
+            }
+          }).reverse()
+        )
+      })
+    case 'stock:insert':
+      const keyList = Object.keys(action.stock['Time Series (Daily)'])
+      const shaped = keyList.map((key, idx) => (
+        {
+          id: action.stock['Meta Data']['2. Symbol'],
+          date: parseTime1(key) || parseTime2(key),
+          value: action.stock['Time Series (Daily)'][key]['4. close']
+        }
+      )).reverse()
+      return state.concat([shaped])
+    case 'stock:delete':
+      return [...state.slice(0, action.index), ...state.slice(action.index + 1)]
+    default:
+      return state
+  }
+}
 
-    case 'SET_U2B_LIST':
-      return {
-        ...state,
-        userstobiz: action.list
-      }
-
-    case 'ADD_USER_TO_BIZ':
-      const thisUserToBiz = {
-        bizid: action.bizId,
-        user: { name: action.userName, email: 'placeholder' }
-      }
-      const newList = state.userstobiz.concat(thisUserToBiz)
-      return {
-        ...state,
-        userstobiz: newList
-      }
-    case 'REMOVE_USER_FROM_BIZ':
-      const filtered = state.userstobiz.filter(biz =>
-        biz.bizid !== action.bizId || typeof biz.user.email !== 'string')
-
-      return {
-        ...state,
-        userstobiz: filtered
-      }
-
-    case 'LOGOUT':
-      return {
-        ...state,
-        userstobiz: []
-      }
-
+export const errorReducer = (state = '', action) => {
+  switch (action.type) {
+    case 'stock:error':
+      return action.error
+    case 'DELETE_ERROR':
+      return ''
     default:
       return state
   }

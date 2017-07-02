@@ -12,7 +12,7 @@ import { getRoutes } from '../router/'
 
 const Root = (props) => (
   <Provider store={props.store}>
-    <div>
+    <div className='root'>
       <MuiThemeProvider muiTheme={getMuiTheme(MyTheme)}>
         <Router history={props.history} routes={getRoutes(props.store)} render={applyRouterMiddleware(useScroll())} />
       </MuiThemeProvider>
